@@ -1,0 +1,7 @@
+output
+.DS_Store
+node_modules
+package-lock.json
+.vscode/settings.json
+licenses/output
+*.bak
