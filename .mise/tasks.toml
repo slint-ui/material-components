@@ -14,7 +14,7 @@ description = "Run taplo format"
 run = "taplo format"
 
 ### lint
-# 
+#
 ["lint:legal:reuse"]
 run = "pipx run reuse lint"
 
