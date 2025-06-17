@@ -60,6 +60,6 @@ jobs:
           with:
             apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
             accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-            command: pages deploy dist --project-name=materialui
+            command: pages deploy docs/dist --project-name=materialui
             gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
