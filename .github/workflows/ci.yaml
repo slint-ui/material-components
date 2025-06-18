@@ -19,7 +19,6 @@ permissions:
 jobs:
   changes:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'workflow_run' }}
     permissions:
       pull-requests: read
     outputs:
@@ -33,16 +32,10 @@ jobs:
             deploy:
               - 'docs/**'
 
-  wait_for_autofix:
-    if: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "autofix.ci completed"
-
   deploy:
-    if: ${{ needs.changes.outputs.deploy == 'true' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
+    if: ${{ needs.changes.outputs.deploy == 'true' && github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    needs: [changes, wait_for_autofix]
+    needs: [changes]
     permissions:
       contents: read
       deployments: write
