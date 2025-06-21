@@ -28,16 +28,6 @@ A `FilterChip` is a chip that can be toggled on and off to filter content. When 
 
 ## Properties
 
-### text
-<SlintProperty propName="text" typeName="string">
-The text label displayed on the chip.
-</SlintProperty>
-
-### icon
-<SlintProperty propName="icon" typeName="image">
-An optional icon displayed on the chip.
-</SlintProperty>
-
 ### checked
 <SlintProperty propName="checked" typeName="bool" propertyVisibility="in-out">
 Whether the filter chip is in the checked (active) state.
@@ -49,14 +39,24 @@ FilterChip {
 ```
 </SlintProperty>
 
-### tooltip
-<SlintProperty propName="tooltip" typeName="string">
-A tooltip text that appears when hovering over the chip.
-</SlintProperty>
-
 ### enabled
 <SlintProperty propName="enabled" typeName="bool" defaultValue="true">
 Whether the chip is enabled and can be interacted with.
+</SlintProperty>
+
+### icon
+<SlintProperty propName="icon" typeName="image">
+An optional icon displayed on the chip.
+</SlintProperty>
+
+### text
+<SlintProperty propName="text" typeName="string">
+The text label displayed on the chip.
+</SlintProperty>
+
+### tooltip
+<SlintProperty propName="tooltip" typeName="string">
+A tooltip text that appears when hovering over the chip.
 </SlintProperty>
 
 ## Functions

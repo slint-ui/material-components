@@ -27,16 +27,6 @@ A `SearchBar` is a text input field designed for search functionality, with opti
 
 ## Properties
 
-### leading_icon
-<SlintProperty propName="leading_icon" typeName="image">
-The icon displayed at the start of the search bar.
-</SlintProperty>
-
-### trailing_icon
-<SlintProperty propName="trailing_icon" typeName="image">
-The icon displayed at the end of the search bar.
-</SlintProperty>
-
 ### avatar
 <SlintProperty propName="avatar" typeName="image">
 An optional avatar image displayed in the search bar.
@@ -47,9 +37,9 @@ An optional avatar image displayed in the search bar.
 The background color for the avatar.
 </SlintProperty>
 
-### placeholder
-<SlintProperty propName="placeholder" typeName="string">
-The placeholder text displayed when the search bar is empty.
+### current_item
+<SlintProperty propName="current_item" typeName="int" propertyVisibility="in-out">
+The index of the currently selected search result item.
 </SlintProperty>
 
 ### empty_text
@@ -57,22 +47,43 @@ The placeholder text displayed when the search bar is empty.
 Text displayed when there are no search results.
 </SlintProperty>
 
-### text
-<SlintProperty propName="text" typeName="string" propertyVisibility="in-out">
-The current text in the search bar.
-</SlintProperty>
-
-### current_item
-<SlintProperty propName="current_item" typeName="int" propertyVisibility="in-out">
-The index of the currently selected search result item.
-</SlintProperty>
-
 ### items
 <SlintProperty propName="items" typeName="[ListItem]">
 An array of search result items to display.
 </SlintProperty>
 
+### leading_icon
+<SlintProperty propName="leading_icon" typeName="image">
+The icon displayed at the start of the search bar.
+</SlintProperty>
+
+### placeholder
+<SlintProperty propName="placeholder" typeName="string">
+The placeholder text displayed when the search bar is empty.
+</SlintProperty>
+
+### text
+<SlintProperty propName="text" typeName="string" propertyVisibility="in-out">
+The current text in the search bar.
+</SlintProperty>
+
+### trailing_icon
+<SlintProperty propName="trailing_icon" typeName="image">
+The icon displayed at the end of the search bar.
+</SlintProperty>
+
 ## Callbacks
+
+### action(index: int)
+Invoked when a search result item action is triggered.
+
+```slint {2-4}
+SearchBar {
+    action(index) => {
+        debug("Search action at index: ", index);
+    }
+}
+```
 
 ### accepted(text: string)
 Invoked when the user presses Enter in the search bar.
@@ -92,17 +103,6 @@ Invoked when the text in the search bar changes.
 SearchBar {
     edited(text) => {
         debug("Search text edited: ", text);
-    }
-}
-```
-
-### action(index: int)
-Invoked when a search result item action is triggered.
-
-```slint {2-4}
-SearchBar {
-    action(index) => {
-        debug("Search action at index: ", index);
     }
 }
 ```

@@ -31,24 +31,29 @@ A `ScrollView` provides scrolling functionality for content that exceeds the ava
 Whether scrolling is enabled.
 </SlintProperty>
 
-### visible_width
-<SlintProperty propName="visible_width" typeName="length" propertyVisibility="out">
-The width of the visible area.
+### has_focus
+<SlintProperty propName="has_focus" typeName="bool" propertyVisibility="in-out">
+Whether the scroll view has focus.
 </SlintProperty>
 
-### visible_height
-<SlintProperty propName="visible_height" typeName="length" propertyVisibility="out">
-The height of the visible area.
+### horizontal_scrollbar_policy
+<SlintProperty propName="horizontal_scrollbar_policy" typeName="ScrollBarPolicy">
+The policy for showing the horizontal scroll bar.
 </SlintProperty>
 
-### viewport_width
-<SlintProperty propName="viewport_width" typeName="length" propertyVisibility="in-out">
-The total width of the scrollable content.
+### vertical_scrollbar_policy
+<SlintProperty propName="vertical_scrollbar_policy" typeName="ScrollBarPolicy">
+The policy for showing the vertical scroll bar.
 </SlintProperty>
 
 ### viewport_height
 <SlintProperty propName="viewport_height" typeName="length" propertyVisibility="in-out">
 The total height of the scrollable content.
+</SlintProperty>
+
+### viewport_width
+<SlintProperty propName="viewport_width" typeName="length" propertyVisibility="in-out">
+The total width of the scrollable content.
 </SlintProperty>
 
 ### viewport_x
@@ -61,19 +66,14 @@ The horizontal scroll position.
 The vertical scroll position.
 </SlintProperty>
 
-### vertical_scrollbar_policy
-<SlintProperty propName="vertical_scrollbar_policy" typeName="ScrollBarPolicy">
-The policy for showing the vertical scroll bar.
+### visible_height
+<SlintProperty propName="visible_height" typeName="length" propertyVisibility="out">
+The height of the visible area.
 </SlintProperty>
 
-### horizontal_scrollbar_policy
-<SlintProperty propName="horizontal_scrollbar_policy" typeName="ScrollBarPolicy">
-The policy for showing the horizontal scroll bar.
-</SlintProperty>
-
-### has_focus
-<SlintProperty propName="has_focus" typeName="bool" propertyVisibility="in-out">
-Whether the scroll view has focus.
+### visible_width
+<SlintProperty propName="visible_width" typeName="length" propertyVisibility="out">
+The width of the visible area.
 </SlintProperty>
 
 ## Callbacks
