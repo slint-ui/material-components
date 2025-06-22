@@ -12,19 +12,15 @@ export const headerData = {
             text: "Gallery",
             href: "/wasm/index.html",
         },
-        {
-            text: "Pages",
-            links: [
-                {
-                    text: "Pricing",
-                    href: getPermalink("/pricing"),
-                },
-                {
-                    text: "Privacy policy",
-                    href: getPermalink("/privacy"),
-                },
-            ],
-        },
+        // {
+        //     text: "Pages",
+        //     links: [
+        //         {
+        //             text: "Privacy policy",
+        //             href: getPermalink("/privacy"),
+        //         },
+        //     ],
+        // },
     ],
     actions: [
         {
