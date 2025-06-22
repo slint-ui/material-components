@@ -103,10 +103,10 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/slint_ui' },
+    { ariaLabel: 'Bluesky', icon: 'tabler:brand-bluesky', href: 'https://bsky.app/profile/slint.dev' },
+    { ariaLabel: 'Mastodon', icon: 'tabler:brand-mastodon', href: 'https://fosstodon.org/@slint' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/slint-ui' },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/slint-ui/material-components' },
   ],
   footNote: `
