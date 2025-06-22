@@ -1,4 +1,10 @@
 {
     "extends": "astro/tsconfigs/strict",
-    "exclude": ["dist", "test-results", "playwright-report"]
+    "exclude": ["dist", "test-results", "playwright-report"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["src/*"]
+        }
+    }
 }
