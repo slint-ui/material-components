@@ -8,7 +8,8 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
 import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
@@ -391,15 +392,72 @@ const metadata = {
     ]}
   />
 
-  <!-- BlogLatestPost Widget **************** -->
+  <!-- FAQs Widget *********** -->
 
-  <BlogLatestPosts
-    id="blog"
-    title="Explore my insightful articles on my blog"
-    information={`Dive into a realm of design wisdom and creative inspiration, where you'll find invaluable insights, practical tips, and captivating narratives that elevate and enrich your creative journey.`}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </BlogLatestPosts>
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Common questions about my services"
+    items={[
+      {
+        title: 'What services do you offer?',
+        description: 'I offer a range of graphic design services including branding, web design, and event posters.',
+      },
+      {
+        title: 'How long does a typical project take?',
+        description: 'The duration depends on the project complexity. I aim to complete most projects within 4-6 weeks.',
+      },
+      {
+        title: 'Do you work with clients from different industries?',
+        description: 'Yes, I have experience working with clients from various industries including tech, fashion, and art.',
+      },
+    ]}
+  />
+
+  <!-- Pricing Widget *********** -->
+
+  <Pricing
+    title="Pricing"
+    subtitle="Choose the plan that fits your needs"
+    prices={[
+      {
+        title: 'Basic Plan',
+        subtitle: 'Perfect for small projects',
+        price: '200',
+        period: 'per project',
+        items: [
+          { description: 'Graphic design', icon: 'tabler:check' },
+          { description: 'Branding', icon: 'tabler:check' },
+          { description: 'Event posters', icon: 'tabler:check' },
+        ],
+        callToAction: { text: 'Get Started', href: '#contact' },
+      },
+      {
+        title: 'Pro Plan',
+        subtitle: 'For growing businesses',
+        price: '500',
+        period: 'per project',
+        items: [
+          { description: 'Graphic design', icon: 'tabler:check' },
+          { description: 'Branding', icon: 'tabler:check' },
+          { description: 'Event posters', icon: 'tabler:check' },
+          { description: 'Web design', icon: 'tabler:check' },
+        ],
+        callToAction: { text: 'Get Started', href: '#contact' },
+      },
+      {
+        title: 'Custom Plan',
+        subtitle: 'For complex projects',
+        price: '1000+',
+        period: 'per project',
+        items: [
+          { description: 'Graphic design', icon: 'tabler:check' },
+          { description: 'Branding', icon: 'tabler:check' },
+          { description: 'Event posters', icon: 'tabler:check' },
+          { description: 'Web design', icon: 'tabler:check' },
+          { description: 'Custom projects', icon: 'tabler:check' },
+        ],
+        callToAction: { text: 'Contact Me', href: '#contact' },
+      },
+    ]}
+  />
 </Layout>
