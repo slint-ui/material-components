@@ -90,3 +90,10 @@
 .dd *:first-child {
     margin-top: 0;
 }
+
+/* Theme transition overrides for instant switching */
+[data-theme-transitioning="true"] *,
+[data-theme-transitioning="true"] *::before,
+[data-theme-transitioning="true"] *::after {
+    transition: none !important;
+}

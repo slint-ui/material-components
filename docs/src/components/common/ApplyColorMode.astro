@@ -8,10 +8,13 @@ import { UI } from "astrowind:config";
 
 <script is:inline define:vars={{ defaultTheme: UI.theme || 'system' }}>
   function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme-transitioning', 'true');
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.dataset.theme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.dataset.theme = 'light';
     }
     const matches = document.querySelectorAll('[data-aw-toggle-color-scheme] > input');
 
@@ -20,6 +23,9 @@ import { UI } from "astrowind:config";
         elem.checked = theme !== 'dark';
       });
     }
+    setTimeout(() => {
+      document.documentElement.removeAttribute('data-theme-transitioning');
+    }, 50);
   }
 
   if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {

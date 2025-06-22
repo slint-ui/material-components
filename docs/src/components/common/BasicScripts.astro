@@ -70,8 +70,14 @@ import { UI } from "astrowind:config";
       if (defaultTheme.endsWith(':only')) {
         return;
       }
+      document.documentElement.setAttribute('data-theme-transitioning', 'true');
       document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const isDark = document.documentElement.classList.contains('dark');
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+      localStorage.theme = isDark ? 'dark' : 'light';
+      setTimeout(() => {
+        document.documentElement.removeAttribute('data-theme-transitioning');
+      }, 50);
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
