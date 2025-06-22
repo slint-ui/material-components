@@ -7,12 +7,12 @@ export const headerData = {
       href: '#',
     },
     {
-      text: 'Docs',
-      href: '#',
+      text: 'Documentation',
+      href: '/overview/',
     },
     {
-      text: 'Other',
-      href: '#',
+      text: 'Gallery',
+      href: '/wasm/index.html',
     },
     {
       text: 'Pages',
