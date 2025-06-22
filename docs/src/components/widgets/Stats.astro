@@ -1,19 +1,21 @@
 ---
-import type { Stats as Props } from '~/types';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Headline from '~/components/ui/Headline.astro';
-import { Icon } from 'astro-icon/components';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import type { Stats as Props } from "~/types";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+import { Icon } from "astro-icon/components";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline,
-  stats = [],
+    title = await Astro.slots.render("title"),
+    subtitle = await Astro.slots.render("subtitle"),
+    tagline,
+    stats = [],
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+    id,
+    isDark = false,
+    classes = {},
+    bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 

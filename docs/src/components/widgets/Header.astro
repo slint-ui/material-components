@@ -1,45 +1,47 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Logo from '~/components/Logo.astro';
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
-import ToggleMenu from '~/components/common/ToggleMenu.astro';
-import Button from '~/components/ui/Button.astro';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import { Icon } from "astro-icon/components";
+import Logo from "~/components/Logo.astro";
+import ToggleTheme from "~/components/common/ToggleTheme.astro";
+import ToggleMenu from "~/components/common/ToggleMenu.astro";
+import Button from "~/components/ui/Button.astro";
 
-import { getHomePermalink } from '~/utils/permalinks';
-import { trimSlash, getAsset } from '~/utils/permalinks';
-import type { CallToAction } from '~/types';
+import { getHomePermalink } from "~/utils/permalinks";
+import { trimSlash, getAsset } from "~/utils/permalinks";
+import type { CallToAction } from "~/types";
 
 interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
+    text?: string;
+    href?: string;
+    ariaLabel?: string;
+    icon?: string;
 }
 
 interface MenuLink extends Link {
-  links?: Array<MenuLink>;
+    links?: Array<MenuLink>;
 }
 
 export interface Props {
-  id?: string;
-  links?: Array<MenuLink>;
-  actions?: Array<CallToAction>;
-  isSticky?: boolean;
-  isDark?: boolean;
-  isFullWidth?: boolean;
-  showToggleTheme?: boolean;
-  position?: string;
+    id?: string;
+    links?: Array<MenuLink>;
+    actions?: Array<CallToAction>;
+    isSticky?: boolean;
+    isDark?: boolean;
+    isFullWidth?: boolean;
+    showToggleTheme?: boolean;
+    position?: string;
 }
 
 const {
-  id = 'header',
-  links = [],
-  actions = [],
-  isSticky = false,
-  isDark = false,
-  isFullWidth = false,
-  showToggleTheme = false,
-  position = 'center',
+    id = "header",
+    links = [],
+    actions = [],
+    isSticky = false,
+    isDark = false,
+    isFullWidth = false,
+    showToggleTheme = false,
+    position = "center",
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;

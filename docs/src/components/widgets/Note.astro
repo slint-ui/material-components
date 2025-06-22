@@ -1,16 +1,18 @@
 ---
-import { Icon } from 'astro-icon/components';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import { Icon } from "astro-icon/components";
 
 export interface Props {
-  icon?: string;
-  title?: string;
-  description?: string;
+    icon?: string;
+    title?: string;
+    description?: string;
 }
 
 const {
-  icon = 'tabler:info-square',
-  title = await Astro.slots.render('title'),
-  description = await Astro.slots.render('description'),
+    icon = "tabler:info-square",
+    title = await Astro.slots.render("title"),
+    description = await Astro.slots.render("description"),
 } = Astro.props;
 ---
 

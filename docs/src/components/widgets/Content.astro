@@ -1,27 +1,29 @@
 ---
-import type { Content as Props } from '~/types';
-import Headline from '~/components/ui/Headline.astro';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Image from '~/components/common/Image.astro';
-import Button from '~/components/ui/Button.astro';
-import ItemGrid from '~/components/ui/ItemGrid.astro';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import type { Content as Props } from "~/types";
+import Headline from "~/components/ui/Headline.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Image from "~/components/common/Image.astro";
+import Button from "~/components/ui/Button.astro";
+import ItemGrid from "~/components/ui/ItemGrid.astro";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline,
-  content = await Astro.slots.render('content'),
-  callToAction,
-  items = [],
-  columns,
-  image = await Astro.slots.render('image'),
-  isReversed = false,
-  isAfterContent = false,
+    title = await Astro.slots.render("title"),
+    subtitle = await Astro.slots.render("subtitle"),
+    tagline,
+    content = await Astro.slots.render("content"),
+    callToAction,
+    items = [],
+    columns,
+    image = await Astro.slots.render("image"),
+    isReversed = false,
+    isAfterContent = false,
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+    id,
+    isDark = false,
+    classes = {},
+    bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 

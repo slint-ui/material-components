@@ -1,24 +1,25 @@
 ---
+<!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
 title: 'Privacy Policy'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
 # Imprint
 
-SixtyFPS GmbH  
-Oranienburger Straße 44  
-16540 Hohen Neuendorf  
+SixtyFPS GmbH
+Oranienburger Straße 44
+16540 Hohen Neuendorf
 [info@slint.dev](mailto:info@slint.dev)
 
 ## Registration
 
-Register court: Amtsgericht Neuruppin  
+Register court: Amtsgericht Neuruppin
 Register number: HRB 14048 NP
 
 ## Managing Directors
 
-Aurindam Jana  
-Olivier Goffart  
+Aurindam Jana
+Olivier Goffart
 Simon Hausmann
 
 ## Umsatzsteuer-ID
@@ -30,7 +31,7 @@ DE345141429
 SixtyFPS GmbH doesn't currently directly collect any personal information from visitors of its website. But some parts of the website are operated by third parties:
 
 - **Cloudflare** is hosting our website, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/en-gb/privacypolicy/).
-- **Matomo** is used for aggregated, anonymous website traffic analysis. In order to track your session usage, Matomo generates a random client ID in your browser. It is anonymous and contains no identifiable information like email, phone number, name, etc. Matomo will also know your IP Address, but has been instructed to anonymize it. We track aggregated website behavior, such as what pages are looked at, for how long, and so on. This information is important to us for improving the user experience and determining site effectiveness. More information from [Matomo Privacy Policy](#matomo).
+- **Matomo** is used for aggregated, anonymous website traffic analysis. In order to track your session usage, Matomo generates a random client ID in your browser. It is anonymous and contains no identifiable information like email, phone number, name, etc. Matomo will also know your IP Address, but has been instructed to anonymize it. We track aggregated website behavior, such as what pages are looked at, for how long, and so on. This information is important to us for improving the user experience and determining site effectiveness. More information from [Matomo Privacy Policy](#matomos-privacy-policy).
 - **YouTube** is used to host video embedded in some of our pages. See [Google Privacy Policy](https://www.google.com/intl/en/policies/privacy/).
 - **ZeroBounce** is used to validate emails for some of the online forms. See [How Does ZeroBounce Ensure the Privacy of My Email](https://www.zerobounce.net/docs/frequently-asked-questions/data-security-and-privacy/how-does-zerobounce-ensure-the-privacy/)?
 

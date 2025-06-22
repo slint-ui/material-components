@@ -1,4 +1,6 @@
 ---
+// Copyright © onWidget <https://github.com/onwidget>
+// SPDX-License-Identifier: MIT
 // component: DListItem
 //
 // Mimics the html 'dl' (description list)
@@ -12,10 +14,10 @@
 //
 const { dt } = Astro.props;
 interface Props {
-  dt: string;
+    dt: string;
 }
 
-const content: string = await Astro.slots.render('default');
+const content: string = await Astro.slots.render("default");
 ---
 
 <h6 set:html={dt} />

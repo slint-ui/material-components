@@ -1,12 +1,14 @@
 ---
-import PageLayout from '~/layouts/PageLayout.astro';
-import Header from '~/components/widgets/Header.astro';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import PageLayout from "~/layouts/PageLayout.astro";
+import Header from "~/components/widgets/Header.astro";
 
-import { headerData } from '~/navigation';
-import type { MetaData } from '~/types';
+import { headerData } from "~/navigation";
+import type { MetaData } from "~/types";
 
 export interface Props {
-  metadata?: MetaData;
+    metadata?: MetaData;
 }
 
 const { metadata } = Astro.props;

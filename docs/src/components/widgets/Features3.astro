@@ -1,25 +1,27 @@
 ---
-import Headline from '~/components/ui/Headline.astro';
-import ItemGrid from '~/components/ui/ItemGrid.astro';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Image from '~/components/common/Image.astro';
-import type { Features as Props } from '~/types';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import Headline from "~/components/ui/Headline.astro";
+import ItemGrid from "~/components/ui/ItemGrid.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Image from "~/components/common/Image.astro";
+import type { Features as Props } from "~/types";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline = await Astro.slots.render('tagline'),
-  image,
-  items = [],
-  columns,
-  defaultIcon,
-  isBeforeContent,
-  isAfterContent,
+    title = await Astro.slots.render("title"),
+    subtitle = await Astro.slots.render("subtitle"),
+    tagline = await Astro.slots.render("tagline"),
+    image,
+    items = [],
+    columns,
+    defaultIcon,
+    isBeforeContent,
+    isAfterContent,
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+    id,
+    isDark = false,
+    classes = {},
+    bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 

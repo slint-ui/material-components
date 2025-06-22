@@ -1,18 +1,20 @@
 ---
-import type { ItemGrid as Props } from '~/types';
-import { twMerge } from 'tailwind-merge';
-import Button from './Button.astro';
-import { Icon } from 'astro-icon/components';
+// Copyright © onWidget <https://github.com/onwidget>
+// SPDX-License-Identifier: MIT
+import type { ItemGrid as Props } from "~/types";
+import { twMerge } from "tailwind-merge";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
 
-const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
+const { items = [], columns, defaultIcon = "", classes = {} } = Astro.props;
 
 const {
-  container: containerClass = '',
-  panel: panelClass = '',
-  title: titleClass = '',
-  description: descriptionClass = '',
-  icon: defaultIconClass = 'text-primary',
-  action: actionClass = '',
+    container: containerClass = "",
+    panel: panelClass = "",
+    title: titleClass = "",
+    description: descriptionClass = "",
+    icon: defaultIconClass = "text-primary",
+    action: actionClass = "",
 } = classes;
 ---
 

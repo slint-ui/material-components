@@ -1,23 +1,25 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { twMerge } from 'tailwind-merge';
-import type { CallToAction as Props } from '~/types';
+// Copyright © onWidget <https://github.com/onwidget>
+// SPDX-License-Identifier: MIT
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+import type { CallToAction as Props } from "~/types";
 
 const {
-  variant = 'secondary',
-  target,
-  text = Astro.slots.render('default'),
-  icon = '',
-  class: className = '',
-  type,
-  ...rest
+    variant = "secondary",
+    target,
+    text = Astro.slots.render("default"),
+    icon = "",
+    class: className = "",
+    type,
+    ...rest
 } = Astro.props;
 
 const variants = {
-  primary: 'btn-primary',
-  secondary: 'btn-secondary',
-  tertiary: 'btn btn-tertiary',
-  link: 'cursor-pointer hover:text-primary',
+    primary: "btn-primary",
+    secondary: "btn-secondary",
+    tertiary: "btn btn-tertiary",
+    link: "cursor-pointer hover:text-primary",
 };
 ---
 

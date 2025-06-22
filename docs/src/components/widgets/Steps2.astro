@@ -1,22 +1,24 @@
 ---
-import { Icon } from 'astro-icon/components';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Headline from '~/components/ui/Headline.astro';
-import Button from '~/components/ui/Button.astro';
-import type { Steps as Props } from '~/types';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import { Icon } from "astro-icon/components";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+import Button from "~/components/ui/Button.astro";
+import type { Steps as Props } from "~/types";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline,
-  callToAction = await Astro.slots.render('callToAction'),
-  items = [],
-  isReversed = false,
+    title = await Astro.slots.render("title"),
+    subtitle = await Astro.slots.render("subtitle"),
+    tagline,
+    callToAction = await Astro.slots.render("callToAction"),
+    items = [],
+    isReversed = false,
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+    id,
+    isDark = false,
+    classes = {},
+    bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 

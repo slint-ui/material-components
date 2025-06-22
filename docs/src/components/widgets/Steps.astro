@@ -1,22 +1,24 @@
 ---
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Timeline from '~/components/ui/Timeline.astro';
-import Headline from '~/components/ui/Headline.astro';
-import Image from '~/components/common/Image.astro';
-import type { Steps as Props } from '~/types';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Timeline from "~/components/ui/Timeline.astro";
+import Headline from "~/components/ui/Headline.astro";
+import Image from "~/components/common/Image.astro";
+import type { Steps as Props } from "~/types";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline = await Astro.slots.render('tagline'),
-  items = [],
-  image = await Astro.slots.render('image'),
-  isReversed = false,
+    title = await Astro.slots.render("title"),
+    subtitle = await Astro.slots.render("subtitle"),
+    tagline = await Astro.slots.render("tagline"),
+    items = [],
+    image = await Astro.slots.render("image"),
+    isReversed = false,
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+    id,
+    isDark = false,
+    classes = {},
+    bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 

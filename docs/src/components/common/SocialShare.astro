@@ -1,13 +1,15 @@
 ---
-import { Icon } from 'astro-icon/components';
+// Copyright © onWidget <https://github.com/onwidget>
+// SPDX-License-Identifier: MIT
+import { Icon } from "astro-icon/components";
 
 export interface Props {
-  text: string;
-  url: string | URL;
-  class?: string;
+    text: string;
+    url: string | URL;
+    class?: string;
 }
 
-const { text, url, class: className = 'inline-block' } = Astro.props;
+const { text, url, class: className = "inline-block" } = Astro.props;
 ---
 
 <div class={className}>

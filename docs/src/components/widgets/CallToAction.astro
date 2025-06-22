@@ -1,27 +1,29 @@
 ---
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import type { CallToAction, Widget } from '~/types';
-import Headline from '~/components/ui/Headline.astro';
-import Button from '~/components/ui/Button.astro';
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import type { CallToAction, Widget } from "~/types";
+import Headline from "~/components/ui/Headline.astro";
+import Button from "~/components/ui/Button.astro";
 
 interface Props extends Widget {
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  callToAction?: CallToAction;
-  actions?: string | CallToAction[];
+    title?: string;
+    subtitle?: string;
+    tagline?: string;
+    callToAction?: CallToAction;
+    actions?: string | CallToAction[];
 }
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline = await Astro.slots.render('tagline'),
-  actions = await Astro.slots.render('actions'),
+    title = await Astro.slots.render("title"),
+    subtitle = await Astro.slots.render("subtitle"),
+    tagline = await Astro.slots.render("tagline"),
+    actions = await Astro.slots.render("actions"),
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
+    id,
+    isDark = false,
+    classes = {},
+    bg = await Astro.slots.render("bg"),
 } = Astro.props;
 ---
 
