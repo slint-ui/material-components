@@ -26,7 +26,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
-  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+    hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 // https://astro.build/config
 export default defineConfig({
@@ -97,63 +97,63 @@ export default defineConfig({
             ],
             favicon: "favicon.svg",
         }),
-    tailwind({
-        applyBaseStyles: false,
+        tailwind({
+            applyBaseStyles: false,
         }),
         sitemap(),
         mdx(),
         icon({
-        include: {
-            tabler: ['*'],
-            'flat-color-icons': [
-            'template',
-            'gallery',
-            'approval',
-            'document',
-            'advertising',
-            'currency-exchange',
-            'voice-presentation',
-            'business-contact',
-            'database',
-            ],
-        },
+            include: {
+                tabler: ['*'],
+                'flat-color-icons': [
+                    'template',
+                    'gallery',
+                    'approval',
+                    'document',
+                    'advertising',
+                    'currency-exchange',
+                    'voice-presentation',
+                    'business-contact',
+                    'database',
+                ],
+            },
         }),
 
         ...whenExternalScripts(() =>
             partytown({
-              config: { forward: ['dataLayer.push'] },
+                config: { forward: ['dataLayer.push'] },
             })
-          ),
+        ),
 
-          compress({
+        compress({
             CSS: true,
             HTML: {
-              'html-minifier-terser': {
-                removeAttributeQuotes: false,
-              },
+                'html-minifier-terser': {
+                    removeAttributeQuotes: false,
+                },
             },
             Image: false,
             JavaScript: true,
             SVG: false,
             Logger: 1,
-          }),
-      
-          astrowind({
+        }),
+
+        astrowind({
             config: './src/config.yaml',
-          }),
-        
-        
+        }),
+
+
     ],
     image: {
         domains: ['cdn.pixabay.com'],
-      },
-      vite: {
+    },
+    vite: {
         resolve: {
-          alias: {
-            '~': path.resolve(__dirname, './src'),
-          },
+            alias: {
+                '~': path.resolve(__dirname, './src'),
+            },
         },
-      },
-    
-      
+    },
+
+
 });
