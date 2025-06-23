@@ -55,7 +55,7 @@
     --sl-color-bg: #1b1b1f;
     --sl-color-hairline: #212329;
     --sl-color-hairline-shade: var(--sl-color-hairline);
-    --badge-border-color: --sl-color-hairline;
+    --badge-border-color: var(--sl-color-hairline);
     --slint-code-background: #151517;
 
     .screenshot-container {
