@@ -10,15 +10,15 @@ site:
 metadata:
   title:
     default: Slint Material Components
-    template: '%s — Slint Material Components'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    template: '%s — Slint Material UI'
+  description: "\U0001F680 A collection of modern, easy-to-use touch-friendly components."
   robots:
     index: true
     follow: true
   openGraph:
     site_name: Slint Material Components
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/Components.png'
         width: 1200
         height: 628
     type: website
