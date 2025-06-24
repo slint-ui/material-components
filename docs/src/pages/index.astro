@@ -36,16 +36,20 @@ const metadata = {
     image={{ src: '~/assets/images/phone-dark.webp', alt: 'Material Components Hero Image' }}
   >
     <Fragment slot="title">
-      Material components for <span class="hidden xl:inline">creating apps with</span>
-      <span class="text-accent dark:text-white"> Slint</span>
+      <span
+        class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent dark:from-cyan-400 dark:via-fuchsia-500 dark:to-yellow-400"
+      >
+        Slint
+      </span>
+      + Material
+      <br/>Start building your next product today.
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Material UI</span> components are free, customizable and production-ready.</span
+        It's never been easier to build a touch based product. </span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">Material UI: Production-ready.</span>
-      Suitable for touch based products on embedded, mobile and desktop.
+      Combine Slint's production grade toolkit, with Google's award winning <span class="font-semibold">Material UI Components.</span> 
     </Fragment>
   </Hero>
 
@@ -131,44 +135,6 @@ const metadata = {
     }}
   >
     <Fragment slot="content">Build professional applications with Material Design.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced User Experience',
-        description:
-          'Captivate your users with intuitive navigation, smooth animations, and visually appealing interfaces that encourage engagement.',
-      },
-      {
-        title: 'Continuous Updates',
-        description:
-          'Stay aligned with the latest Material Design specifications through regular updates and new component additions.',
-      },
-      {
-        title: 'Rapid Development',
-        description:
-          'Skip the time-consuming process of building UI components from scratch and launch your Slint application sooner with Material UI.',
-      },
-      {
-        title: 'Community Support',
-        description: `Join the growing Slint community for insights, resources, and assistance, ensuring you're never alone on your development journey.`,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/Components.png',
-      alt: 'Slint Material UI Development',
-    }}
-  >
-    <Fragment slot="content">Designed to accelerate your development workflow.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
