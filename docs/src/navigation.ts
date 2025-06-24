@@ -112,7 +112,6 @@ export const footerData = {
             icon: "tabler:brand-youtube",
             href: "https://www.youtube.com/@slint-ui",
         },
-        
     ],
     footNote: `
     Copyright © 2025 SixtyFPS GmbH
