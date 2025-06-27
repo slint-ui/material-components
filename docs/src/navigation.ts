@@ -21,7 +21,7 @@ export const footerData = {
             title: "Company",
             links: [
                 { text: "Learn more about Slint", href: "https://slint.dev/" },
-                { text: "Privacy Policy", href: "https://slint.dev/imprint" }
+                { text: "Privacy Policy", href: "https://slint.dev/imprint" },
             ],
         },
     ],
