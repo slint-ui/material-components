@@ -20,8 +20,8 @@ are possible. We will inform as soon as the component set is read for release.
 | Gallery                                                                                                   |
 | --------------------------------------------------------------------------------------------------------- |
 | [Gallery![Gallery image](https://github.com/user-attachments/assets/e8031b78-4e7e-42fe-b34d-ef81a10defbe)](examples/gallery) |
-| 👉 Try the [WebAssembly build on the browser](https://material.slint.dev/wasm/) 👈 |
-|Download the [APK for android](https://material.slint.dev/apk/slint_material.apk) |
+| 👉 Try the [WebAssembly build in the web browser](https://material.slint.dev/wasm/) 👈 |
+|Download and install the [APK for android](https://material.slint.dev/apk/slint_material.apk) |
 
 ## Documentation
 
@@ -29,11 +29,11 @@ View the documentation online at https://material.slint.dev/overview/
 
 ### Get Started
 
-Clone one of our Material Components for Slint Template and follow the instruction from their README
+Clone one of our Material Components for Slint templates and follow the instruction from their README:
 
  - Rust: https://github.com/slint-ui/material-rust-template
  - C++: https://github.com/slint-ui/material-cpp-template
- - Node/Deno: https://github.com/slint-ui/material-nodejs-template
+ - Node.js/Deno: https://github.com/slint-ui/material-nodejs-template
  - Python: https://github.com/slint-ui/material-python-template
 
 ## Contributions
