@@ -19,7 +19,8 @@ are possible. We will inform as soon as the component set is read for release.
 
 ## Demos
 
-[WebAssembly build in the web browser](https://material.slint.dev/wasm/) 
+[WebAssembly build in the web browser](https://material.slint.dev/wasm/)
+
 Download and install the [APK for android](https://material.slint.dev/apk/slint_material.apk)
 
 ## Documentation
