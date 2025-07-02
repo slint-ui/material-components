@@ -1,13 +1,14 @@
 @font-face {
-    font-family: 'icomoon';
-    src:  url('/slint-logo.woff?7c7sjy') format('woff');
+    font-family: "icomoon";
+    src: url("/slint-logo.woff?7c7sjy") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: block;
-  }
+}
 
-  [class^="icon-"], [class*=" icon-"] {
-    font-family: 'icomoon', sans-serif !important;
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: "icomoon", sans-serif !important;
     speak: never;
     font-style: normal;
     font-weight: normal;
@@ -17,15 +18,15 @@
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
+}
 
-  .icon-slint-logo-small-light:before {
+.icon-slint-logo-small-light:before {
     content: "\e900";
     color: #2379f4;
-  }
+}
 
-  .slint-logo-inline {
+.slint-logo-inline {
     font-size: 1em;
     vertical-align: -0.09em;
     margin-right: -0.15em;
-  }
+}
