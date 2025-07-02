@@ -2,6 +2,7 @@
 // Copyright © onWidget <https://github.com/onwidget>
 // SPDX-License-Identifier: MIT
 import "~/assets/styles/tailwind.css";
+import "~/assets/styles/iconfont.css";
 
 import { I18N } from "astrowind:config";
 
@@ -35,8 +36,6 @@ const { language, textDirection } = I18N;
     <ApplyColorMode />
     <Metadata {...metadata} />
     <SiteVerification />
-
-    <link rel="stylesheet" href="/src/assets/styles/iconfont.css" />
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
