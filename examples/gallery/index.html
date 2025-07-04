@@ -26,7 +26,10 @@
   </head>
   <body>
     <!-- canvas required by the Slint runtime -->
-    <canvas id="canvas"></canvas>
+    <div style="position: fixed; inset: 0; width: 100dvw; height: 100dvh; overflow: hidden; z-index: 0;">
+      <canvas id="canvas" style="position: absolute; top: 0; left: 0; width: 100dvw; height: 100dvh; background: black;"></canvas>
+      <img src="./frame-tablet.png" alt="Tablet Frame" style="position: absolute; top: 16px; left: 16px; width: calc(100dvw - 32px); height: auto; pointer-events: none; z-index: 1;" />
+    </div>
     <script type="module">
       // import the generated file.
       import init from "./pkg/gallery_lib.js";
