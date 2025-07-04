@@ -26,11 +26,34 @@
   </head>
   <body>
     <!-- canvas required by the Slint runtime -->
-    <div style="position: fixed; inset: 0; width: 100dvw; height: 100dvh; overflow: hidden; z-index: 0;">
-      <canvas id="canvas" style="position: absolute; top: 0; left: 0; width: 100dvw; height: 100dvh; background: black;"></canvas>
-      <img src="./frame-tablet.png" alt="Tablet Frame" style="position: absolute; top: 16px; left: 16px; width: calc(100dvw - 32px); height: auto; pointer-events: none; z-index: 1;" />
+    <div style="position: fixed; inset: 0; width: 100dvw; height: 100dvh; overflow: auto; z-index: 0;">
+      <div id="frame-container" style="margin: 20px; position: relative; width: calc(100dvw - 40px); height: auto;">
+        <div id="canvas-container" style="position: relative; width: 100%; height: auto;">
+          <canvas id="canvas" style="display: block; width: 100%; background: black;"></canvas>
+        </div>
+        <img id="frame-img" src="./frame-tablet.png" alt="Tablet Frame" style="display: block; width: 100%; height: auto; pointer-events: none; position: absolute; top: 0; left: 0; z-index: 1;" />
+      </div>
     </div>
     <script type="module">
+      // Dynamically set canvas height to match frame image aspect ratio
+      const frameImg = document.getElementById('frame-img');
+      const canvas = document.getElementById('canvas');
+      const container = document.getElementById('canvas-container');
+      function resizeCanvas() {
+        const width = container.clientWidth;
+        const aspect = 10 / 7; // landscape tablet aspect ratio
+        const height = width / aspect;
+        container.style.height = height + 'px';
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        canvas.width = width;
+        canvas.height = height;
+        // Optionally, you can still set the frame image height if you want it to match the canvas
+        // frameImg.style.height = height + 'px';
+      }
+      frameImg.onload = resizeCanvas;
+      window.addEventListener('resize', resizeCanvas);
+      if (frameImg.complete) resizeCanvas();
       // import the generated file.
       import init from "./pkg/gallery_lib.js";
       init();
