@@ -14,8 +14,8 @@ import {
     NavigationRail,
     NavigationItem,
     NavigationBar,
-    SmallAppBar
-
+    SmallAppBar,
+    MaterialStyleMetrics
 } from "../../../../material.slint";
 
 export enum Views {
@@ -33,9 +33,11 @@ export component MainView {
     ];
 
     VerticalLayout {
-        SmallAppBar {
+        app-bar := SmallAppBar {
             title: "Material 3";
-            trailing_icons: [{ icon: Palette.color_scheme == ColorScheme.light ? OutlinedIcons.dark_mode : OutlinedIcons.light_mode, enabled: true }];
+            trailing_icons: [
+                { icon: Palette.color_scheme == ColorScheme.light ? OutlinedIcons.dark_mode : OutlinedIcons.light_mode, enabled: true },
+            ];
             container_background: MainWindowAdapter.container_background;
 
             trailing_clicked(index) => {
@@ -73,6 +75,18 @@ export component MainView {
                 //     items: root.navigation_items;
                 // }
             }
+        }
+    }
+
+
+    Image {
+        x: app-bar.x + (app-bar.width - self.width)/2;
+        y: app-bar.y + (app-bar.height - self.height)/2;
+        height: app-bar.height - 4 * MaterialStyleMetrics.padding_8;
+        source: Palette.color_scheme == ColorScheme.light ? @image-url("../slint-logo-full-light.svg") : @image-url("../slint-logo-full-dark.svg");
+        TouchArea {
+            clicked => { MainWindowAdapter.open-url("https://slint.dev"); }
+            mouse-cursor: MouseCursor.pointer;
         }
     }
 }
