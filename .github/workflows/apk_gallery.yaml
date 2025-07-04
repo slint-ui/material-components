@@ -28,7 +28,7 @@ jobs:
               with:
                   path: |
                       target/release/apk/slint_material.apk
-                  key: apk-build-${{ hashFiles('examples/gallery/**', 'ui/**') }}
+                  key: apk-build-${{ hashFiles('examples/gallery/**', 'ui/**', 'Cargo.toml', 'material.slint', 'crate/**') }}
             - name: Install Android API level 30
               run: ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-30"
             - name: Install Rust

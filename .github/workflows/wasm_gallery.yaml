@@ -23,7 +23,7 @@ jobs:
                       examples/gallery/pkg
                       examples/gallery/index.html
                       examples/gallery/frame-tablet.webp
-                  key: wasm-build-${{ hashFiles('examples/gallery/**', 'ui/**') }}
+                  key: wasm-build-${{ hashFiles('examples/gallery/**', 'ui/**', 'Cargo.toml', 'material.slint', 'crate/**') }}
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
               with:
