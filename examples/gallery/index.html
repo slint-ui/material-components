@@ -17,10 +17,23 @@
         overflow: hidden;
       }
 
+      body {
+        background: white;
+      }
+
       canvas {
         width: 100% !important;
         height: 100% !important;
-        background: black;
+        background: white;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #040620;
+        }
+        canvas {
+          background: #040620;
+        }
       }
     </style>
   </head>
