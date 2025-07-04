@@ -12,6 +12,7 @@ slint::include_modules!();
 fn ui() -> MainWindow {
     let ui = MainWindow::new().unwrap();
     navigation_view(&ui);
+    main_view(&ui);
     ui
 }
 
@@ -75,4 +76,11 @@ fn color_item(name: &str, red: u8, green: u8, blue: u8, ui: &MainWindow) -> List
         action_icon: OutlinedIcons::get(&ui).get_share(),
         ..Default::default()
     }
+}
+
+fn main_view(ui: &MainWindow) {
+    let adapter = MainWindowAdapter::get(ui);
+    adapter.on_open_url(|url|{
+        let _ = webbrowser::open(&url);
+    });
 }
