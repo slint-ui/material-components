@@ -80,7 +80,7 @@ fn color_item(name: &str, red: u8, green: u8, blue: u8, ui: &MainWindow) -> List
 
 fn main_view(ui: &MainWindow) {
     let adapter = MainWindowAdapter::get(ui);
-    adapter.on_open_url(|url|{
+    adapter.on_open_url(|url| {
         let _ = webbrowser::open(&url);
     });
 }
