@@ -28,32 +28,36 @@
     <!-- canvas required by the Slint runtime -->
     <div style="position: fixed; inset: 0; width: 100dvw; height: 100dvh; overflow: auto; z-index: 0;">
       <div id="frame-container" style="margin: 20px; position: relative; width: calc(100dvw - 40px); height: auto;">
-        <div id="canvas-container" style="position: relative; width: 100%; height: auto;">
+        <div id="canvas-container" style="position: relative; width: 93.2%; height: auto; margin: 3% auto 3% auto; z-index: 0;">
           <canvas id="canvas" style="display: block; width: 100%; background: black;"></canvas>
         </div>
-        <img id="frame-img" src="./frame-tablet.png" alt="Tablet Frame" style="display: block; width: 100%; height: auto; pointer-events: none; position: absolute; top: 0; left: 0; z-index: 1;" />
+        <img id="frame-img" src="./frame-tablet.png" alt="Tablet Frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;" />
       </div>
     </div>
     <script type="module">
-      // Dynamically set canvas height to match frame image aspect ratio
+      // Dynamically set canvas height to 10:7 aspect ratio and frame-container height to match frame image aspect ratio
       const frameImg = document.getElementById('frame-img');
       const canvas = document.getElementById('canvas');
       const container = document.getElementById('canvas-container');
+      const frameContainer = document.getElementById('frame-container');
       function resizeCanvas() {
-        const width = container.clientWidth;
-        const aspect = 10 / 7; // landscape tablet aspect ratio
-        const height = width / aspect;
-        container.style.height = height + 'px';
-        canvas.style.width = width + 'px';
-        canvas.style.height = height + 'px';
-        canvas.width = width;
-        canvas.height = height;
-        // Optionally, you can still set the frame image height if you want it to match the canvas
-        // frameImg.style.height = height + 'px';
+        const width = frameContainer.clientWidth;
+        // Set frame-container height to match frame image aspect ratio (landscape tablet, e.g. 10:7)
+        const frameAspect = 10 / 7;
+        const frameHeight = width / frameAspect;
+        frameContainer.style.height = frameHeight + 'px';
+        // Now set canvas-container and canvas as before
+        const canvasWidth = container.clientWidth;
+        const canvasAspect = 10 / 7;
+        const canvasHeight = canvasWidth / canvasAspect;
+        container.style.height = canvasHeight + 'px';
+        canvas.style.width = canvasWidth + 'px';
+        canvas.style.height = canvasHeight + 'px';
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
       }
-      frameImg.onload = resizeCanvas;
       window.addEventListener('resize', resizeCanvas);
-      if (frameImg.complete) resizeCanvas();
+      resizeCanvas();
       // import the generated file.
       import init from "./pkg/gallery_lib.js";
       init();
