@@ -50,6 +50,7 @@ jobs:
               if: steps.cargo-apk-cache.outputs.cache-hit != 'true'
               run: cargo install cargo-apk
             - uses: Swatinem/rust-cache@v2
+              if: steps.cache-apk.outputs.cache-hit != 'true'
               with:
                   key: apk-build
             - name: dump keystore
