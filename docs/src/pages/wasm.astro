@@ -1,21 +1,14 @@
 ---
 // Copyright © SixtyFPS GmbH <info@slint.dev>
 // SPDX-License-Identifier: MIT
-import Hero from "~/components/widgets/Hero.astro";
 import Layout from "~/layouts/PageLayout.astro";
 
 const metadata = {
-    title: "Slint Material 3 Gallery (Web Assembly version)",
+	title: "Slint Material 3 Gallery (Web Assembly version)",
 };
 ---
 
-<script type="module">
-  import init from "/wasm/pkg/gallery_lib.js";
-  init();
-</script>
-
 <Layout metadata={metadata}>
-  <Hero tagline="Slint Material 3 Gallery" />
 
   <style>
     * {
@@ -24,14 +17,13 @@ const metadata = {
       overflow: hidden;
     }
     .wasm-demo-body {
-      background: white;
       width: 100vw;
-      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      overflow: visible;
     }
+
     .canvas-container {
       position: relative;
       width: 80vw;
@@ -59,17 +51,8 @@ const metadata = {
       pointer-events: none;
       z-index: 1;
     }
-    @media (prefers-color-scheme: dark) {
-      .wasm-demo-body {
-        background: #040620;
-      }
-      .canvas-container canvas {
-        background: #040620;
-      }
-    }
     @media (max-width: 600px), (pointer: coarse) and (hover: none) {
       .canvas-container {
-        position: relative !important;
         width: 100vw !important;
         max-width: 100vw !important;
         height: 100vh !important;
@@ -84,13 +67,25 @@ const metadata = {
       .canvas-container img {
         display: none !important;
       }
+      .hide-on-mobile {
+        display: none !important;
+      }
     }
   </style>
 
-  <div class="wasm-demo-body">
+  <script type="module">
+    import init from "https://material.slint.dev/wasm/pkg/gallery_lib.js";
+    init();
+  </script>
+
+  <h1 class="hide-on-mobile font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter text-center mt-16 mb-8 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    Slint Material 3 Gallery
+  </h1>
+
+  <div class="wasm-demo-body bg-page dark:bg-dark mb-12 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
     <div class="canvas-container">
       <canvas id="canvas"></canvas>
-      <img src="/wasm/frame-tablet.webp" alt="Tablet Frame" />
+      <img src="https://material.slint.dev/wasm/frame-tablet.webp" alt="Tablet Frame" />
     </div>
   </div>
 </Layout>
