@@ -9,7 +9,7 @@ export const headerData = {
         },
         {
             text: "Demo",
-            href: "/wasm/index.html",
+            href: "/wasm/",
         },
         {
             text: "Slint Home",
