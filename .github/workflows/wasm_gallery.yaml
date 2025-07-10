@@ -45,6 +45,5 @@ jobs:
               with:
                   name: wasm_gallery
                   path: |
-                      examples/gallery/index.html
                       examples/gallery/frame-tablet.webp
                       examples/gallery/pkg
