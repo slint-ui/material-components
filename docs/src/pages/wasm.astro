@@ -1,0 +1,91 @@
+---
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+import Layout from "~/layouts/PageLayout.astro";
+
+const metadata = {
+    title: "Slint Material 3 Gallery (Web Assembly version)",
+};
+---
+
+<Layout metadata={metadata}>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .wasm-demo-body {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .canvas-container {
+      position: relative;
+      width: 80vw;
+      max-width: 1000px;
+      aspect-ratio: 10 / 7;
+      margin: 2rem auto;
+      overflow: visible;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .canvas-container canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+    .canvas-container img {
+      position: absolute;
+      top: -5%;
+      left: -3.8%;
+      width: 107.4%;
+      height: 110%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (max-width: 600px), (pointer: coarse) and (hover: none) {
+      .canvas-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        aspect-ratio: unset !important;
+        margin: 0 !important;
+      }
+      .canvas-container canvas {
+        width: 100vw !important;
+        height: 100vh !important;
+      }
+      .canvas-container img {
+        display: none !important;
+      }
+      .hide-on-mobile {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script type="module">
+    import init from "https://material.slint.dev/wasm/pkg/gallery_lib.js";
+    init();
+  </script>
+
+  <h1 class="hide-on-mobile font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter text-center mt-16 mb-8 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    Slint Material 3 Gallery
+  </h1>
+
+  <div class="wasm-demo-body bg-page dark:bg-dark mb-12 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+      <img src="https://material.slint.dev/wasm/frame-tablet.webp" alt="Tablet Frame" />
+    </div>
+  </div>
+</Layout>
