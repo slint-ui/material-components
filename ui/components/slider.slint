@@ -12,7 +12,7 @@ export component Slider {
     in property <float> divisions: 0;
     in property <float> maximum: 100;
 
-    callback released(float);
+    callback released(value: float);
 
     property <float> steps: root.divisions > 0 ? (root.maximum - root.minimum) / root.divisions : 1;
 
