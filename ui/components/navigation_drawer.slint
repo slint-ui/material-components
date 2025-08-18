@@ -81,8 +81,8 @@ component NavigationItemTempalte inherits BaseNavigationItemTemplate {
                 root.clicked();
             }
 
-            pointer-event(event) => {
-                root.pointer-event(event, {
+            pointer_event(event) => {
+                root.pointer_event(event, {
                     x: self.mouse_x,
                     y: self.mouse_y,
                 });
@@ -109,7 +109,7 @@ component NavigationGroupTemplate {
     in property <bool> has_divider;
 
     callback select(index: int);
-    callback item-pointer-event(index: int, event: PointerEvent, position: Point);
+    callback item_pointer_event(index: int, event: PointerEvent, position: Point);
 
     VerticalLayout {
         alignment: start;
@@ -129,8 +129,8 @@ component NavigationGroupTemplate {
             clicked => {
                 root.select(index);
             }
-            pointer-event(event, position) => {
-                root.item-pointer-event(index, event, {
+            pointer_event(event, position) => {
+                root.item_pointer_event(index, event, {
                     x: self.x + position.x,
                     y: self.y + position.y,
                 });
@@ -142,8 +142,8 @@ component NavigationGroupTemplate {
 }
 
 export component NavigationDrawer inherits Drawer {
-    callback selected(group-index: int, item-index: int);
-    callback item-pointer-event(group-index: int, item-index: int, event: PointerEvent, position: Point);
+    callback selected(group-index: int, item_index: int);
+    callback item_pointer_event(group_index: int, item_index: int, event: PointerEvent, position: Point);
     in property <[NavigationGroup]> groups;
     in_out property <int> current_group;
     in_out property <int> current_item;
@@ -162,8 +162,8 @@ export component NavigationDrawer inherits Drawer {
         select(index) => {
             root.select(group_index, index);
         }
-        item-pointer-event(index, event, position) => {
-            root.item-pointer-event(group_index, index, event, { x: self.x + position.x, y: self.y + position.y });
+        item_pointer_event(index, event, position) => {
+            root.item_pointer_event(group_index, index, event, { x: self.x + position.x, y: self.y + position.y });
         }
     }
 
