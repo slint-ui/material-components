@@ -42,13 +42,13 @@ export component RadioButton {
                 border_radius: max(self.width, self.height) / 2;
                 background: MaterialPalette.primary;
                 opacity: !root.checked ? 0 : 1;
-                
+
                 animate opacity {
                     duration: Animations.opacity_duration;
                     easing: Animations.opacity_easing;
-                }            
+                }
             }
-            
+
             animate border_color {
                 duration: Animations.opacity_duration;
                 easing: Animations.opacity_easing;
