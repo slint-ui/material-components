@@ -9,18 +9,18 @@ import SlintProperty from '/src/components/SlintProperty.astro';
 
 <CodeSnippetMD imagePath="" noScreenShot scale="3" imageWidth="300" imageHeight="200" imageAlt="">
 ```slint
-import { VerticalDivider, HorizontalDivider } from "material.slint";
+import { VerticalDivider, HorizontalDivider, TextButton } from "material.slint";
 export component Example inherits Window {
     width: 200px;
     height: 100px;
 
     VerticalLayout {
         spacing: 8px;
-        MaterialText { text: "Section 1"; }
+        TextButton { text: "Section 1"; }
         HorizontalDivider {}
-        MaterialText { text: "Section 2"; }
+        TextButton { text: "Section 2"; }
         HorizontalDivider {}
-        MaterialText { text: "Section 3"; }
+        TextButton { text: "Section 3"; }
     }
 }
 ```
