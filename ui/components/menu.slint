@@ -18,16 +18,16 @@ component MenuItemTemplate {
     in property <bool> enabled <=> state_area.enabled;
 
     callback clicked();
-    
+
     property <bool> has_icon: root.icon.width > 0 && root.icon.height > 0;
     property <color> color: MaterialPalette.on_surface;
     property <color> color_variant: MaterialPalette.on_surface_variant;
-    
+
     min_height: max(MaterialStyleMetrics.size_56, layout.min_height);
 
     state_area := StateLayerArea {
         color: root.color;
-        
+
         layout := HorizontalLayout {
             padding_left: MaterialStyleMetrics.padding_12;
             padding_right: self.padding_left;
@@ -51,7 +51,7 @@ component MenuItemTemplate {
                 color: root.color;
                 vertical_alignment: center;
             }
-                
+
             if root.trailing_text != "" : MaterialText {
                 text: root.trailing_text;
                 style: Typography.body_large;
@@ -59,7 +59,7 @@ component MenuItemTemplate {
                 vertical_alignment: center;
             }
         }
-        
+
         clicked => {
             root.clicked();
         }
@@ -85,7 +85,7 @@ export component Menu inherits PopupWindow {
 
     wrapper := VerticalLayout {
         padding: root.elevation * 1px;
-        
+
         menu := Elevation {
             level: root.elevation;
             height: layout.min_height + root.elevation * 1px;
@@ -107,7 +107,7 @@ export component Menu inherits PopupWindow {
                         root.item_clicked(index);
                     }
                 }
-            }     
+            }
         }
     }
 }
