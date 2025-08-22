@@ -43,7 +43,7 @@ import { MainWindowAdapter } from "../main_window_adapter.slint";
 import { FilledIcons, OutlinedIcons } from "../icons.slint";
 
 export global NavigationViewAdapter {
-    in_out property <[ListItem]> search_items;    
+    in_out property <[ListItem]> search_items;
     in property <[bool]> radio_buttons: [ true, false, false ];
 
     callback search(text: string);
@@ -480,7 +480,7 @@ export component NavigationView {
                             { icon: OutlinedIcons.bookmark, text: "Bookmark", enabled: true },
                             { icon: OutlinedIcons.explore, text: "Explore", enabled: true },
                             { icon: OutlinedIcons.chat_bubble, text: "Chat", enabled: true },
-                            { icon: OutlinedIcons.favorite, text: "Favorite", enabled: true },          
+                            { icon: OutlinedIcons.favorite, text: "Favorite", enabled: true },
                         ];
                     }
                 }

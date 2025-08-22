@@ -64,7 +64,7 @@ export component DropDownMenu {
 
         VerticalLayout {
             alignment: start;
-            
+
             inner_text_field := TextField {
                 width: root.width;
                 leading_icon: root.leading_icon;
@@ -86,7 +86,7 @@ export component DropDownMenu {
                 width: 100%;
                 height: min(max(root.item_height, items.length * root.item_height), root.max_displayed_items * root.item_height);
                 background: MaterialPalette.surface_container;
-    
+
                 ScrollView {
                     VerticalLayout {
                         menu_inner := MenuInner {

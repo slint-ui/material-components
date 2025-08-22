@@ -26,7 +26,7 @@ component MenuItemTemplate {
 
     min_height: max(MaterialStyleMetrics.size_56, layout.min_height);
 
-    background_layer := Rectangle {   
+    background_layer := Rectangle {
         state_area := StateLayerArea {
             color: root.color;
 
@@ -67,7 +67,7 @@ component MenuItemTemplate {
             }
         }
     }
-    
+
     states [
         disabled when !root.enabled : {
             state_area.opacity: MaterialPalette.disable_opacity;
