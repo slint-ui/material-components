@@ -28,7 +28,6 @@ export component DropDownMenu {
     forward_focus: text_field; accessible-role: combobox;
     accessible_enabled: root.enabled;
     accessible_expandable: true;
-    accessible_expanded: inner_text_field.has_focus;
     accessible_value <=> text_field.text;
     accessible_action_expand => { menu.show(); }
 
