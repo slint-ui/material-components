@@ -1,0 +1,14 @@
+// Copyright © SixtyFPS GmbH <info@slint.dev>
+// SPDX-License-Identifier: MIT
+
+import { BaseDialog } from "./dialog.slint";
+
+export component DatePicker inherits PopupWindow {
+    in property <string> title;
+    
+    base := BaseDialog {
+        width: 100%;
+        height: 100%;
+        title: root.title;
+    }
+}

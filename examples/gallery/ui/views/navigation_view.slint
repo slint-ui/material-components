@@ -31,7 +31,8 @@ import {
     Slider,
     TextField,
     RadioButtonTile,
-    Menu
+    Menu,
+    DatePicker
 } from "../../../../material.slint";
 
 import { Group } from "../components/group.slint";
@@ -464,6 +465,23 @@ export component NavigationView {
                     }
                 }
             }
+            
+            ComponentCard {
+                title: "Date picker";
+
+                Horizontal {
+                    alignment: center;
+
+                    TextButton {
+                        icon: OutlinedIcons.calendar_month;
+                        text: "Show date picker";
+
+                        clicked => {
+                            date_picker.show();
+                        }
+                    }
+                }
+            }
 
             ComponentCard {
                 title: "Switches";
@@ -637,5 +655,13 @@ export component NavigationView {
         ok => {
             time_picker.close();
         }
+    }
+
+    date_picker := DatePicker {  
+        // this is used to place the popup on 0,0 of the window and also to fill the window
+        x: -root.absolute_position.x;
+        y: -root.absolute_position.y;
+        width: MainWindowAdapter.width;
+        height: MainWindowAdapter.height;
     }
 }
