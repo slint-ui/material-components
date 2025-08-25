@@ -2,13 +2,474 @@
 // SPDX-License-Identifier: MIT
 
 import { BaseDialog } from "./dialog.slint";
+import { MaterialStyleMetrics } from "../styling/material_style_metrics.slint";
+import { Icons } from "../icons/icons.slint";
+import { MaterialText } from "./material_text.slint";
+import { StateLayer } from "./state_layer.slint";
+import { ScrollView } from "./scroll_view.slint";
+import { IconButton } from "./icon_button.slint";
+import { TextField } from "./text_field.slint";
+
+export struct Date {
+    year: int,
+    month: int,
+    day: int,
+}
+
+component CalendarHeaderDelegate {
+    in property <string> text <=> text_label.text;
+
+    min_width: max(MaterialStyleMetrics.size_40, content_layer.min_width);
+    min_height: max(MaterialStyleMetrics.size_40, content_layer.min_height);
+
+    content_layer := VerticalLayout {
+        text_label := MaterialText {
+            vertical_alignment: center;
+            horizontal_alignment: center;
+            // FIXME: styling
+        }
+    }
+}
+
+component CalendarDelegate {
+    in property <bool> selected;
+    in property <bool> today;
+    in property <string> text <=> text_label.text;
+    in property <bool> enabled: true;
+
+    callback clicked <=> touch_area.clicked;
+
+    min_width: max(MaterialStyleMetrics.size_40, content_layer.min_width);
+    min_height: max(MaterialStyleMetrics.size_40, content_layer.min_height);
+    forward_focus: focus_scope;
+
+    accessible_role: button;
+    accessible_checkable: true;
+    accessible_checked: root.selected;
+    accessible_label: root.text;
+    accessible_action_default => { touch_area.clicked(); }
+
+    touch_area := TouchArea {
+        enabled: root.enabled;
+    }
+
+    focus_scope := FocusScope {
+        width: 0px;
+        enabled: root.enabled;
+
+        key_pressed(event) => {
+            if (event.text == " " || event.text == "\n") {
+                touch_area.clicked();
+                 return accept;
+            }
+
+            return reject;
+        }
+    }
+
+    background_layer := Rectangle {
+        border_radius: self.height / 2;
+    }
+
+    content_layer := HorizontalLayout {
+        text_label := MaterialText {
+            vertical_alignment: center;
+            horizontal_alignment: center;
+
+            // FIXME: styling
+        }
+    }
+
+    state_layer := StateLayer {
+        enabled: root.enabled;
+        border_radius: background_layer.border_radius;
+        pressed: touch_area.pressed;
+        has_hover: touch_area.has_hover;
+        has_focus: focus_scope.has_focus;
+    }
+
+    states [
+        // FIXME: states
+        disabled when !root.enabled : {
+            root.opacity: 0.38;
+        }
+        selected when root.selected : {
+        }
+        today when root.today : {
+        }
+    ]
+}
+
+export component Calendar {
+    in property <int> column_count;
+    in property <int> row_count;
+    in property <length> delegate_size;
+    in property <int> start_column;
+    in property <[string]> header_model;
+    in property <int> month_count;
+    in property <Date> today;
+    in property <Date> selected_date;
+    in property <int> display_month;
+    in property <int> display_year;
+
+    callback select_date(date: Date);
+
+    // header
+    for day[index] in root.header_model : CalendarHeaderDelegate {
+        x: root.delegate_x(index);
+        y: root.delegate_y(index);
+        text: day;
+        // FIXME: style?
+    }
+
+    // items
+    for index in root.month_count : CalendarDelegate {
+        property <Date> d: { day: index + 1, month: root.display_month, year: root.display_year };
+
+        x: root.delegate_x(root.index_on_calendar(index));
+        y: root.delegate_y(root.index_on_calendar(index));
+        width: root.delegate_size;
+        height: root.delegate_size;
+        text: index + 1;
+        selected: root.selected_date == self.d;
+        today: root.today == self.d;
+        // FIXME: style?
+
+        clicked => {
+            root.select_date(self.d);
+        }
+    }
+
+    function index_on_calendar(index: int) -> int {
+        // add column count because items starts after header row
+        root.column_count + root.start_column + index
+    }
+
+    function row_for_index(index: int) -> int {
+        floor(index / root.column_count)
+    }
+
+    function column_for_index(index: int) -> int {
+        mod(index, root.column_count)
+    }
+
+    function delegate_x(index: int) -> length {
+        root.column_for_index(index) * root.delegate_size + root.column_for_index(index) * 1px /* * root.style.spacing */
+    }
+
+    function delegate_y(index: int) -> length {
+        root.row_for_index(index) * root.delegate_size + root.row_for_index(index) * 1px /* * root.style.spacing */
+    }
+}
+
+component YearSelection {
+    in property <[int]> model;
+    in property <length> spacing;
+    in property <int> visible_row_count;
+    in property <int> column_count;
+    in property <length> delegate_width;
+    in property <length> delegate_height;
+    in property <int> selected_year;
+    in property <int> today_year;
+
+    callback select_year(year: int);
+
+    property <length> row_height: root.height / root.visible_row_count;
+    property <int> row_count: root.model.length / root.column_count;
+    property <length> viewport_height: root.row_count * root.row_height;
+    property <length> start_x: root.width / (root.column_count + 1);
+    property <length> start_y: root.height / (root.visible_row_count + 1);
+
+    ScrollView {
+        width: 100%;
+        height: 100%;
+        viewport_width: root.width;
+        viewport_height: root.viewport_height;
+
+        for year[index] in root.model: CalendarDelegate {
+            x: root.delegate_center_x(index) - self.width / 2;
+            y: root.delegate_center_y(index) - self.height / 2;
+            width: root.delegate_width;
+            height: root.delegate_height;
+            text: year;
+            selected: year == root.selected_year;
+            today: year == root.today_year;
+            // FIXME: style?
+
+            clicked => {
+                root.select_year(year);
+            }
+        }
+    }
+
+    function delegate_center_x(index: int) -> length {
+        root.start_x * (root.column_for_index(index) + 1)
+    }
+
+    function delegate_center_y(index: int) -> length {
+        root.start_y * (root.row_for_index(index) + 1)
+    }
+
+    function row_for_index(index: int) -> int {
+        floor(index / root.column_count)
+    }
+
+    function column_for_index(index: int) -> int {
+        mod(index, root.column_count)
+    }
+}
+
 
 export component DatePicker inherits PopupWindow {
     in property <string> title;
+    in property <Date> date : { day: today[0], month: today[1], year: today[2] };
+    in property <string> input-title: @tr("Enter date");
+    in property <string> input-placeholder-text: "mm/dd/yyyy";
+    in property <string> input-format: "%m/%d/%Y";
+    in property <string> cancel_text: @tr("Cancel");
+    in property <string> ok_text: @tr("Ok");
+
+    // this is used for the navigation between months
+    property <bool> keyboard_mode;
+    property <Date> display-date: root.date;
+    property <Date> current-date: root.date;
+    property <length> delegate-size: 40px;
+    property <length> year-delegate-width: 72px;
+    property <int> calendar-column-count: 7;
+    property <int> calendar-row-count: 6;
+    property <length> calendar-min-width: root.delegate-size * root.calendar-column-count + (root.calendar-column-count - 1) * 1px /* FIXME * root.style.calendar-style.spacing */;
+    property <length> calendar-min-height: root.delegate-size *(root.calendar-row-count + 1) + (root.calendar-row-count - 1) * 1px /* FIXME * root.style.calendar-style.spacing; */;
+    property <int> year-selection-column-count: 3;
+    property <int> year-selection-row-count: 5;
+    property <bool> year-selection;
+    property <bool> selection-mode: true;
+    property <string> current-input;
+
+    property <int> calendar-month-count;// FIXME: SlintInternal.month_day_count(root.display-date.month, root.display-date.year);
+    property <[string]> calendar-header-model: [
+        @tr("One-letter abbrev for Sunday" => "S"),
+        @tr("One-letter abbrev for Monday" => "M"),
+        @tr("One-letter abbrev for Tuesday" => "T"),
+        @tr("One-letter abbrev for Wednesday" => "W"),
+        @tr("One-letter abbrev for Thursday" => "T"),
+        @tr("One-letter abbrev for Friday" => "F"),
+        @tr("One-letter abbrev for Saturday" => "S"),
+    ];
+    property <[int]> today; //FIXME: SlintInternal.date_now();
+    property <int> start-column; // FIXME: SlintInternal.month_offset(root.display-date.month, root.display-date.year);
+    property <string> current-month; //FIXME: : SlintInternal.format_date("%B %Y", root.display-date.day, root.display-date.month, root.display-date.year);
+    property <[int]> year-model: [2024, 2025, 2026, 2027, 2028, 2029, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043];
+    property <int> selected-year: root.display-date.year;
+    property <int> today-year: root.today[2];
+    property <string> current-day;// FIXME: SlintInternal.format_date("%a, %b %d", root.current-date.day, root.current-date.month, root.current-date.year);
+    property <[int]> input-formatted;// FIXME: SlintInternal.parse_date(root.current-input, root.input-format);
+
+    close_policy: no_auto_close;
+    forward_focus: base;
     
     base := BaseDialog {
         width: 100%;
         height: 100%;
         title: root.title;
+        icon_actions: [
+            root.keyboard_mode ? Icons.schedule : Icons.keyboard
+        ];
+        actions: [
+            root.cancel_text,
+            root.ok_text
+        ];
+
+        content-layer := VerticalLayout {
+
+            MaterialText {
+                text: root.title;
+                horizontal-alignment: left;
+                overflow: elide;
+                // FIXME: style
+            }
+
+            header := HorizontalLayout {
+                // FIXME: Style
+
+                MaterialText {
+                    text: root.selection-mode ? root.current-day : root.input-title;
+                    horizontal-alignment: left;
+                    vertical-alignment: center;
+                    // FIXME: style
+                }
+
+                IconButton {
+                    // FIXME: icon
+                    // icon: root.selection-mode ? root.style.input-icon : root.style.calendar-icon;
+                    accessible-label: "Toggle selection mode";
+
+                    clicked => {
+                        root.toggle-selection-mode();
+                    }
+                }
+            }
+
+            Rectangle {
+                height: 1px;
+                // FIXME: background
+            }
+
+            if root.selection-mode : HorizontalLayout {
+                // FIXME: spacing
+
+                VerticalLayout {
+                    horizontal-stretch: 0;
+                    alignment: center;
+
+                    // FIXME: replace
+                    // SelectionButton {
+                    //     text: root.current-month;
+                    //     style: root.style.selection-button-style;
+                    //     icon: root.style.drop-down-icon;
+                    //     checked <=> root.year-selection;
+                    // }
+                }
+
+                Rectangle {}
+
+                IconButton {
+                    // FIXME: add icon
+                    accessible-label: "Previous month";
+
+                    clicked => {
+                        root.show-previous();
+                    }
+                }
+
+                IconButton {
+                    // FIXME: add icon
+                    accessible-label: "Next month";
+
+                    clicked => {
+                        root.show-next();
+                    }
+                }
+            }
+
+            if root.selection-mode : VerticalLayout {
+                // FIXME: spacing
+
+                if !root.year-selection : Calendar {
+                    min-width: root.calendar-min-width;
+                    min-height: root.calendar-min-height;
+                    column-count: root.calendar-column-count;
+                    row-count: root.calendar-row-count;
+                    delegate-size: root.delegate-size;
+                    // FIXME: style
+                    header-model: root.calendar-header-model;
+                    month-count: root.calendar-month-count;
+                    today: { day: root.today[0], month: root.today[1], year: root.today[2] };
+                    selected-date <=> root.current-date;
+                    start-column: root.start-column;
+                    display-month: root.display-date.month;
+                    display-year: root.display-date.year;
+
+                    select-date(date) => {
+                        root.select-date(date);
+                    }
+                }
+
+                if root.year-selection : YearSelection {
+                    min-width: root.calendar-min-width;
+                    min-height: root.calendar-min-height;
+                    // FIXME: spacing
+                    column-count: root.year-selection-column-count;
+                    visible-row-count: root.year-selection-row-count;
+                    delegate-width: root.year-delegate-width;
+                    delegate-height: root.delegate-size;
+                    model: root.year-model;
+                    // FIXME: delegate style
+                    selected-year: root.selected-year;
+                    today-year: root.today-year;
+
+                    select-year(year) => {
+                        root.select-year(year);
+                    }
+                }
+            }
+
+            Rectangle {
+                height: 1px;
+                // FIXME: background
+                visible: root.year-selection;
+            }
+
+            if !root.selection-mode : TextField {
+                text <=> root.current-input;
+                placeholder: root.input-placeholder-text;
+            }
+        }
+    }
+
+    changed date => {
+        root.display-date = root.date;
+        root.current-date = root.date;
+    }
+
+    changed selection-mode => {
+        // check switch from input mode if input is valid
+        if root.selection-mode && root.current-input-valid() {
+            root.current-date = root.input-as-date();
+            root.display-date = root.current-date;
+        }
+    }
+
+    pure public function ok-enabled() -> bool {
+        root.selection-mode || root.current-input-valid()
+    }
+
+    public function get-current-date() -> Date {
+        if root.selection-mode {
+            return root.current-date;
+        }
+
+        root.input-as-date()
+    }
+
+    pure function current-input-valid() -> bool {
+        // FIXME: add to gallery
+        // SlintInternal.valid_date(root.current-input, root.input-format)
+        false
+    }
+
+    pure function input-as-date() -> Date {
+        { day: root.input-formatted[0], month: root.input-formatted[1], year: root.input-formatted[2] }
+    }
+
+    function select-date(date: Date) {
+        root.current-date = date;
+    }
+
+    function select-year(year: int) {
+        root.current-date = { day: 1, month: 1, year: year };
+        root.display-date = root.current-date;
+        root.year-selection = false;
+    }
+
+    function show-next() {
+        if root.display-date.month >= 12 {
+            root.display-date = { day: 1, month: 1, year: root.display-date.year + 1 };
+            return;
+        }
+
+        root.display-date = { day: 1, month: root.display-date.month + 1, year: root.display-date.year };
+    }
+
+    function show-previous() {
+        if root.display-date.month <= 1 {
+            root.display-date = { day: 1, month: 12, year: root.display-date.year - 1 };
+            return;
+        }
+
+        root.display-date = { day: 1, month: root.display-date.month - 1, year: root.display-date.year };
+    }
+
+    function toggle-selection-mode() {
+        root.selection-mode = !root.selection-mode;
     }
 }
