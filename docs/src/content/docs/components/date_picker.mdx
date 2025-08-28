@@ -65,7 +65,7 @@ By default, a DatePickerPopup closes when the user clicks. Set this to false to 
 ### canceled()
 Invoked when the cancel button is clicked.
 
-```slint {2_4}
+```slint
 date_picker := DatePickerPopup {
     canceled() => {
         date_picker.close();
@@ -76,7 +76,7 @@ date_picker := DatePickerPopup {
 ### accepted(Date)
 Invoked when the ok button is clicked.
 
-```slint {2_5}
+```slint
 date_picker := DatePickerPopup {
     accepted(date) => {
         debug("Selected date: ", date);
