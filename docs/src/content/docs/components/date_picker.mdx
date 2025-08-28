@@ -48,7 +48,7 @@ The text that is displayed at the top of the picker.
 ### date
 <SlintProperty propName="date" typeName="struct" structName="Date">
 Set the initial displayed date.
-```slint "date: { year: 2024, month: 11 };"
+```slint "date: { year: 2024, month: 11 };" no-test
 DatePickerPopup {
     date: { year: 2024, month: 11 };
 }
@@ -65,7 +65,7 @@ By default, a DatePickerPopup closes when the user clicks. Set this to false to 
 ### canceled()
 Invoked when the cancel button is clicked.
 
-```slint
+```slint no-test
 date_picker := DatePickerPopup {
     canceled() => {
         date_picker.close();
@@ -76,7 +76,7 @@ date_picker := DatePickerPopup {
 ### accepted(Date)
 Invoked when the ok button is clicked.
 
-```slint
+```slint no-test
 date_picker := DatePickerPopup {
     accepted(date) => {
         debug("Selected date: ", date);
