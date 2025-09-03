@@ -12,7 +12,7 @@ component BaseAppBar {
     in property <string> title;
     in property <IconButtonItem> leading_button;
     in property <bool> container_background;
-    in property <[IconButtonItem]> trailing_icons;
+    in property <[IconButtonItem]> trailing_buttons;
     in property <TextHorizontalAlignment> horizontal_alignment;
     in property <length> spacing;
     in property <length> vertical_spacing;
@@ -69,13 +69,13 @@ component BaseAppBar {
                     horizontal_stretch: 1;
                 }
 
-                if root.trailing_icons.length > 0 : VerticalLayout {
+                if root.trailing_buttons.length > 0 : VerticalLayout {
                     alignment: center;
 
                     HorizontalLayout {
                         spacing: top_layout.spacing;
 
-                        for item[index] in root.trailing_icons : IconButton {
+                        for item[index] in root.trailing_buttons : IconButton {
                             icon: item.icon;
                             enabled: item.enabled;
                             tooltip: item.tooltip;
@@ -107,7 +107,7 @@ component BaseAppBar {
 export component AppBar {
     in property <string> title;
     in property <IconButtonItem> leading_button;
-    in property <IconButtonItem> trailing_icon;
+    in property <IconButtonItem> trailing_button;
     in property <bool> container_background;
 
     callback leading_clicked();
@@ -120,7 +120,7 @@ export component AppBar {
             title: root.title;
             horizontal_alignment: center;
             leading_button: root.leading_button;
-            trailing_icons: [root.trailing_icon];
+            trailing_buttons: [root.trailing_button];
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
             padding_right: self.padding_left;
@@ -143,7 +143,7 @@ export component AppBar {
 export component SmallAppBar {
     in property <string> title;
     in property <IconButtonItem> leading_button;
-    in property <[IconButtonItem]> trailing_icons;
+    in property <[IconButtonItem]> trailing_buttons;
     in property <bool> container_background;
 
     callback leading_clicked();
@@ -156,7 +156,7 @@ export component SmallAppBar {
             title: root.title;
             horizontal_alignment: left;
             leading_button: root.leading_button;
-            trailing_icons: root.trailing_icons;
+            trailing_buttons: root.trailing_buttons;
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
             padding_right: self.padding_left;
@@ -179,7 +179,7 @@ export component SmallAppBar {
 export component MediumAppBar {
     in property <string> title;
     in property <IconButtonItem> leading_button;
-    in property <[IconButtonItem]> trailing_icons;
+    in property <[IconButtonItem]> trailing_buttons;
     in property <bool> container_background;
 
     callback leading_clicked();
@@ -192,7 +192,7 @@ export component MediumAppBar {
             title: root.title;
             horizontal_alignment: left;
             leading_button: root.leading_button;
-            trailing_icons: root.trailing_icons;
+            trailing_buttons: root.trailing_buttons;
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
             padding_right: self.padding_left;
@@ -218,7 +218,7 @@ export component MediumAppBar {
 export component LargeAppBar {
     in property <string> title;
     in property <IconButtonItem> leading_button;
-    in property <[IconButtonItem]> trailing_icons;
+    in property <[IconButtonItem]> trailing_buttons;
     in property <bool> container_background;
 
     callback leading_clicked();
@@ -231,7 +231,7 @@ export component LargeAppBar {
             title: root.title;
             horizontal_alignment: left;
             leading_button: root.leading_button;
-            trailing_icons: root.trailing_icons;
+            trailing_buttons: root.trailing_buttons;
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
             padding_right: self.padding_left;
