@@ -10,7 +10,7 @@ import { IconButtonItem } from "./bottom_app_bar.slint";
 
 component BaseAppBar {
     in property <string> title;
-    in property <IconButtonItem> leading_icon;
+    in property <IconButtonItem> leading_button;
     in property <bool> container_background;
     in property <[IconButtonItem]> trailing_icons;
     in property <TextHorizontalAlignment> horizontal_alignment;
@@ -40,13 +40,13 @@ component BaseAppBar {
                 padding_right: root.padding_right;
                 spacing: MaterialStyleMetrics.spacing_6;
 
-                if root.leading_icon.icon.width > 0 && root.leading_icon.icon.height > 0 : VerticalLayout {
+                if root.leading_button.icon.width > 0 && root.leading_button.icon.height > 0 : VerticalLayout {
                     alignment: center;
 
                     IconButton {
-                        icon: root.leading_icon.icon;
-                        enabled: root.leading_icon.enabled;
-                        tooltip: root.leading_icon.tooltip;
+                        icon: root.leading_button.icon;
+                        enabled: root.leading_button.enabled;
+                        tooltip: root.leading_button.tooltip;
 
                         clicked => {
                             root.leading_clicked();
@@ -106,7 +106,7 @@ component BaseAppBar {
 
 export component AppBar {
     in property <string> title;
-    in property <IconButtonItem> leading_icon;
+    in property <IconButtonItem> leading_button;
     in property <IconButtonItem> trailing_icon;
     in property <bool> container_background;
 
@@ -119,7 +119,7 @@ export component AppBar {
         base := BaseAppBar {
             title: root.title;
             horizontal_alignment: center;
-            leading_icon: root.leading_icon;
+            leading_button: root.leading_button;
             trailing_icons: [root.trailing_icon];
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
@@ -142,7 +142,7 @@ export component AppBar {
 
 export component SmallAppBar {
     in property <string> title;
-    in property <IconButtonItem> leading_icon;
+    in property <IconButtonItem> leading_button;
     in property <[IconButtonItem]> trailing_icons;
     in property <bool> container_background;
 
@@ -155,7 +155,7 @@ export component SmallAppBar {
         base := BaseAppBar {
             title: root.title;
             horizontal_alignment: left;
-            leading_icon: root.leading_icon;
+            leading_button: root.leading_button;
             trailing_icons: root.trailing_icons;
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
@@ -178,7 +178,7 @@ export component SmallAppBar {
 
 export component MediumAppBar {
     in property <string> title;
-    in property <IconButtonItem> leading_icon;
+    in property <IconButtonItem> leading_button;
     in property <[IconButtonItem]> trailing_icons;
     in property <bool> container_background;
 
@@ -191,7 +191,7 @@ export component MediumAppBar {
         base := BaseAppBar {
             title: root.title;
             horizontal_alignment: left;
-            leading_icon: root.leading_icon;
+            leading_button: root.leading_button;
             trailing_icons: root.trailing_icons;
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
@@ -217,7 +217,7 @@ export component MediumAppBar {
 
 export component LargeAppBar {
     in property <string> title;
-    in property <IconButtonItem> leading_icon;
+    in property <IconButtonItem> leading_button;
     in property <[IconButtonItem]> trailing_icons;
     in property <bool> container_background;
 
@@ -230,7 +230,7 @@ export component LargeAppBar {
         base := BaseAppBar {
             title: root.title;
             horizontal_alignment: left;
-            leading_icon: root.leading_icon;
+            leading_button: root.leading_button;
             trailing_icons: root.trailing_icons;
             container_background: root.container_background;
             padding_left: MaterialStyleMetrics.padding_4;
