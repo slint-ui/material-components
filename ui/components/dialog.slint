@@ -101,7 +101,7 @@ export component BaseDialog {
     callback default_action_clicked();
     callback action_button_clicked(index: int);
     callback action_clicked(index: int);
-    callback closed();
+    callback close();
 
     forward_focus: focus_scope;
 
@@ -116,7 +116,7 @@ export component BaseDialog {
             }
 
             if event.text == Key.Escape {
-                root.closed();
+                root.close();
                 return accept;
             }
 
@@ -194,7 +194,7 @@ export component BaseDialog {
         }
 
         clicked => {
-            root.closed();
+            root.close();
         }
     }
 
@@ -226,7 +226,7 @@ export component Dialog inherits PopupWindow {
 
         @children
 
-        closed => {
+        close => {
             root.close();
         }
     }
