@@ -486,7 +486,7 @@ export component DatePickerPopup inherits PopupWindow {
             }
         }
 
-        action(index) => {
+        action_clicked(index) => {
             // cancel
             if index == 0 {
                 root.close();
@@ -496,7 +496,7 @@ export component DatePickerPopup inherits PopupWindow {
             }
         }
 
-        close => {
+        closed => {
             root.close();
         }
     }
