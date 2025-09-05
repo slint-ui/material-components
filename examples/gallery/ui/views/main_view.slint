@@ -76,7 +76,7 @@ export component MainView {
             y: app_bar.height / 2;
             items: MainViewAdapter.palettes;
 
-            item_clicked(index) => {
+            activated(index) => {
                 MainViewAdapter.load_palette(index);
                 color_menu.close();
             }
