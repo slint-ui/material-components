@@ -90,7 +90,7 @@ export component CheckBox {
     ]
 }
 
-export component CheckBoxListTile inherits ListTile {
+export component CheckBoxListTile inherits ListTile { 
     in_out property <CheckState> check_state <=> check_box.check_state;
     out property <bool> checked <=> check_box.checked;
     in property <bool> tristate <=> check_box.tristate;

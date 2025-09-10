@@ -539,13 +539,14 @@ export component NavigationView {
                 title: "Sliders";
 
                 Vertical {
+                    spacing: MaterialStyleMetrics.size_24;
                     Horizontal {
                         Slider {}
                     }
 
                     Horizontal {
                         Slider {
-                            divisions: 5;
+                            stop_count: 5;
                         }
                     }
                 }
