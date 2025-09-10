@@ -13,6 +13,7 @@ export component Slider {
     in property <float> maximum: 100;
 
     callback released(value: float);
+    callback value_changed(value: float);
 
     property <int> steps: root.stop_count > 0 ? (root.maximum - root.minimum) / root.stop_count : 1;
 
@@ -115,6 +116,10 @@ export component Slider {
             }
             reject
         }
+    }
+
+    changed value => {
+        root.value_changed(root.value);
     }
 
     pure function value_to_length(width: length, value: float) -> length {
