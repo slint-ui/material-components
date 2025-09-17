@@ -28,12 +28,6 @@ export component Example inherits Window {
         close_policy: PopupClosePolicy.no_auto_close;
         time: { hour: 12, minute: 24 };
 
-        accepted(date) => {
-            date_picker.close();
-        }
-        canceled => {
-            date_picker.close();
-        }
     }
 }
 ```
