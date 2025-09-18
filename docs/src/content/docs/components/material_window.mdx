@@ -32,42 +32,4 @@ A `MaterialWindow` is the root window component that provides Material Design th
 When set to `true`, disables hover effects throughout the application. This is useful for touch-only interfaces or accessibility purposes.
 </SlintProperty>
 
-### background
-<SlintProperty propName="background" typeName="color" defaultValue="MaterialPalette.background">
-The background color of the window. Automatically set to the Material Design background color from the current color scheme.
-</SlintProperty>
 
-## Inherited Properties
-
-As MaterialWindow extends the standard Window component, it inherits all Window properties including:
-
-- `title` - The window title
-- `width` and `height` - Window dimensions
-- `icon` - Window icon
-- `no-frame` - Whether to show window decorations
-- And all other standard Window properties
-
-## Behavior
-
-- Automatically applies the Material Design background color based on the current theme
-- Synchronizes the `disable-hover` property with the global `MaterialWindowAdapter` for system-wide hover control
-- Provides the foundation for Material Design theming throughout the application
-- All Material Design components within this window will inherit proper theming and color schemes
-
-## Usage
-
-MaterialWindow should be used as the root component for applications that want to follow Material Design guidelines. It ensures consistent theming and provides the proper foundation for all other Material Design components.
-
-```slint
-import { MaterialWindow, MaterialText } from "./material.slint";
-
-export component App inherits MaterialWindow {
-    width: 800px;
-    height: 600px;
-    title: "My Material App";
-
-    MaterialText {
-        text: "This text will use proper Material Design colors";
-    }
-}
-```
