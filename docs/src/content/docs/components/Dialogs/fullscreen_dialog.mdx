@@ -7,32 +7,6 @@ description: FullscreenDialog API.
 import CodeSnippetMD from '/src/components/CodeSnippetMD.astro';
 import SlintProperty from '/src/components/SlintProperty.astro';
 
-<CodeSnippetMD imagePath="" noScreenShot scale="3" imageWidth="300" imageHeight="200" imageAlt="">
-```slint
-import { FullscreenDialog } from "./material.slint";
-export component Example inherits Window {
-    width: 400px;
-    height: 300px;
-    background: transparent;
-    FullscreenDialog {
-        title: "Edit Profile";
-        actions: ["Cancel", "Save"];
-
-        // Dialog content goes here
-        Rectangle {
-            background: #f0f0f0;
-            Text {
-                text: "Dialog content area";
-            }
-        }
-
-        action_clicked(index) => {
-            fullscreen_dialog.close();
-        }
-    }
-}
-```
-</CodeSnippetMD>
 
 A `FullscreenDialog` is a modal dialog that occupies the entire screen, typically used for complex forms or detailed content that requires more space than a standard dialog. It includes a header with a close button, title, and action buttons.
 
