@@ -1,0 +1,49 @@
+---
+<!-- Copyright © SixtyFPS GmbH <info@slint.dev> ; SPDX-License-Identifier: MIT -->
+title: Drawer
+description: Drawer API.
+---
+
+import CodeSnippetMD from '/src/components/CodeSnippetMD.astro';
+import SlintProperty from '/src/components/SlintProperty.astro';
+
+<CodeSnippetMD imagePath="" noScreenShot scale="3" imageWidth="300" imageHeight="200" imageAlt="">
+```slint
+import { Drawer } from "./material.slint";
+export component Example inherits Window {
+    width: 400px;
+    height: 300px;
+    background: transparent;
+    Drawer {
+        width: 280px;
+        height: parent.height;
+        title: "Menu";
+
+        // Drawer content goes here
+        Rectangle {
+            background: #f0f0f0;
+            Text {
+                text: "Drawer content";
+            }
+        }
+    }
+}
+```
+</CodeSnippetMD>
+
+A `Drawer` is a side panel container that provides a structured layout for navigation or content. It includes an optional header with a title and a content area for custom elements.
+
+## Properties
+
+### title
+<SlintProperty propName="title" typeName="string">
+The title text displayed in the drawer header. If empty, no header is shown.
+</SlintProperty>
+
+## Behavior
+
+- The drawer has a rounded corner design with material design styling
+- Content is laid out vertically with proper spacing and padding
+- The drawer automatically sizes to fit its content with a minimum width of 360px
+- The header is only displayed when a title is provided
+- Custom content can be added as children and will appear below the header
